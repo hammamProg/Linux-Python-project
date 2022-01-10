@@ -21,40 +21,39 @@ a linux lab project at [Birzeit university](https://www.birzeit.edu/en/content/e
 ---------------------------
 
 
+# Sample Data
+
+> 1201180.txt
+```
+2020-2021/1 ; ENCS2380 80,ENCS2110 60
+2020-2021/2 ; ENCS4380 80,ENCS2110 70
+2021-2022/1 ; ENCS5342 90,ENCS5321 75
+2021-2022/3 ; ENCS5131 90,ENCS3310 95
+```
+> 1191081.txt
+```
+2020-2021/1 ; ENCS2380 75,ENCS2110 40
+2020-2021/2 ; ENCS4380 85,ENCS2110 99
+2021-2022/2 ; ENCS5342 65,ENCS5321 60
+2022-2023/3 ; ENCS5131 85,ENCS3310 99
+```
+
 # Sample Run
 
-<!-- ### File existance check
-![](img/file_existance.png)
+![](img/9.png)
 
-### Exit
-![](img/exit.png)
+![](img/1.png)
 
-## Menu Commands
+![](img/2.png)
 
-----------------------------
+![](img/3.png)
 
-#### Add Contact
-![](img/add_new_contact.png)
+![](img/4.png)
 
-----------------------------
+![](img/5.png)
 
-#### List contacts based on first name
-![](img/list_base_1.png)
+![](img/7.png)
 
-#### List contacts based on last name
-![](img/list_base_2.png)
+![](img/8.png)
 
-----------------------------
-
-#### Search for Contact
-![](img/search.png)
-
-----------------------------
-
-#### Edit Contact
-![](img/update.png)
-
-----------------------------
-
-#### Delete Contact
-![](img/delete.png) -->
+![](img/6.png)
