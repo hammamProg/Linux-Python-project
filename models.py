@@ -84,10 +84,25 @@ class Student():
     
     def print_statistics(self) -> None:
         
+        
+        from plan import plan
+        
+        finished_courses = [] 
+        
         for sem in self.semesters.values():
+            finished_courses.extend(sem.marks.keys())
             print("Average of semester [" + str(sem.year_sem) + "] is " + str(sem.get_avg()))
-            
+        
         print("\nAnd overall average is " + str(self.get_gpa()))
+        
+        print("\nFinished Courses > ")
+        print(finished_courses)
+        
+        remainings = [c for c in plan if c not in finished_courses]
+        print("\nRemaining Courses > ")
+        print(remainings)
+        
+        
             
     
     def __init__(self, id: int, semesters: dict[str, SemesterRecord]) -> None:
@@ -112,6 +127,22 @@ class Student():
             return id
         
         return None
+    
+    def cmp(self, term, comparator, value) -> bool:
+        
+        insider_value = self.get_gpa()
+        
+        if term == 2: # hours
+            insider_value = self.get_hours()
+            
+        if comparator == 0:
+            return insider_value == value
+        elif comparator == 1:
+            return insider_value < value
+        else:
+            return insider_value > value
+        
+            
         
     
             

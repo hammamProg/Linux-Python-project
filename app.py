@@ -1,4 +1,4 @@
-from utils import read_files, add_semester, add_new_record, is_number, update_mark, student_statistics, global_statistics
+from utils import read_files, add_semester, add_new_record, is_number, update_mark, student_statistics, global_statistics, search
 
 ##########################################
 
@@ -45,7 +45,7 @@ Enter Command Number:
         elif cmd == 5:
             global_statistics()
         elif cmd == 6:
-            pass
+            search()
         else:
             break
         

@@ -226,8 +226,23 @@ def global_statistics():
     plt.hist(marks)
     plt.show()
     
-# # 6
-# def search():
+# 6
+def search():
+    
+    print("\nChoose the search term:\n\t1-Avg\n\t2-hours")
+    
+    t = is_number(input("\nEnter Term Number:"))
+    
+    print("\nChoose the condition:\n\t0-equal\n\t1-less than\n\t2-greater than")
+    
+    c = is_number(input("\nEnter condition number: "))
+    
+    val = is_number(input("\nEnter value to compare with: "))
+    
+    for s in students.values():
+        if s.cmp(term=t, comparator=c, value=val):
+            print(s.id)
+    
     
     
     
