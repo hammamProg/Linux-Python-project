@@ -51,7 +51,31 @@ Enter Command Number:
         
 
 def student():
-    pass
+    
+    while(True):
+    
+        print("""\n 
+|===================|
+  \t Menu
+|===================|\n
+1- Student statistics
+2- Global statistics
+7- Exit\n
+Enter Command Number: 
+            """)
+        
+        cmd = is_number(input())
+        if cmd == 1:
+            try:
+                student_statistics()
+            except KeyError:
+                print("\nID not found")
+        elif cmd == 5:
+            pass
+        elif cmd == 6:
+            pass
+        else:
+            break
 
 ##########################################
 
