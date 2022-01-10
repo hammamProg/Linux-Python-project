@@ -6,53 +6,78 @@ from typing import Tuple
 class SemesterRecord():
     ''' class for saving data of a student in a semester '''
     
-    def semester_calc(self) -> Tuple[int, float]:
+    def get_avg(self) -> float:
         ''' returns the GPA of the current semester '''
         
-        hours: int = 0
+        hours: int = self.get_hours()
         sum: float = 0.0
         
         for course_id in self.marks.keys():
-            hours += self.marks[course_id][0]
-            sum += self.marks[course_id][1]
+            sum += self.marks[course_id][1] * self.marks[course_id][0]
             
-        return hours, sum / hours
+        if hours == 0:
+            return 0
+            
+        return sum / hours
+    
+    def get_hours(self) -> int:
+        ''' returns the GPA of the current semester '''
+        
+        hours: int = 0
+        
+        for course_id in self.marks.keys():
+            hours += self.marks[course_id][0]
+            
+        return hours
     
     def __init__(self, year_sem: str, courses_dict: dict[str, Tuple[int, float]]) -> None:
         
         self.year_sem = year_sem
         self.marks = courses_dict
-        
-        self.hours, self.avg = self.semester_calc()
-        
-        
 
 class Student():
     ''' Student Class '''
     
-    def calc(self) -> Tuple[float, int]:
-        ''' calculate avg, sum of hours'''
+    def get_gpa(self) -> float:
+        ''' calculate gpa '''
+        
+        sem_points = 0
+        
+        for sem in self.semesters.values():
+            sem_points += sem.get_hours() * sem.get_avg()
+            
+        hours = self.get_hours()
+        if hours==0:
+            return 0
+        
+            
+        return sem_points / hours
+    
+    def get_hours(self) -> int:
+        ''' sum of hours '''
         
         overall_hours: int = 0
-        gpa: float = 0.0
         
-        for sem in self.semesters.keys():
+        for sem in self.semesters.values():
+            overall_hours += sem.get_hours()
             
-            points = ( overall_hours * gpa ) + ( self.semesters[sem].hours * self.semesters[sem].avg )
-            overall_hours += self.semesters[sem].hours
-            gpa = points / overall_hours
+        return overall_hours
+    
+    def print_statistics(self) -> None:
         
-        return gpa, overall_hours
+        for sem in self.semesters.values():
+            print("Average of semester [" + str(sem.year_sem) + "] is " + str(sem.get_avg()))
+            
+        print("\nAnd overall average is " + str(self.get_gpa()))
+            
     
     def __init__(self, id: int, semesters: dict[str, SemesterRecord]) -> None:
         
         self.id = id
         self.semesters = semesters
-        # self.gpa , self.hours = self.calc()
-        # self.avg_hours_per_sem = self.hours / len(semesters.keys())
         
     def __str__(self) -> str:
-        return "[ID:" + str(self.id) + ", gpa:" + str(self.gpa) + ", hours:" + str(self.hours) + ", semesters: " + str(self.semesters) + " ]"
+        return "[ID:" + str(self.id) + ", gpa:" + str(self.get_gpa()) + ", hours:" + str(self.get_hours()) + ", semesters: " + str(self.semesters) + " ]"
         
     @staticmethod
     def is_valid_id(id_str) -> int:

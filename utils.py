@@ -35,7 +35,7 @@ def read_file(id: int) -> Student:
                 
                 hours = get_hours_from_course_id(course_id)
                 
-                sem_dict[course_id] = (mark, hours)
+                sem_dict[course_id] = (hours, mark)
                 
             semesters[year_sem] = SemesterRecord(year_sem=year_sem, courses_dict=sem_dict)
                 
@@ -179,8 +179,22 @@ def update_mark():
                 print("! invalid input")
                 return
             
-            sem.marks[course_id][1] = mark
+            sem.marks[course_id] = (sem.marks[course_id][0], mark)
             write_student(students[id])
             return
         
     print("Course not found")
+    
+# 4
+def student_statistics():
+    
+    id = is_number(input("Enter Student ID: "))
+    
+    if id is None or not Student.is_valid_id(id):
+        print("! invalid input")
+        return
+    
+    if id not in students:
+        raise KeyError("Student with this ID was not found")
+    
+    students[id].print_statistics()
