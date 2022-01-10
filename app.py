@@ -1,4 +1,4 @@
-from utils import read_files, add_semester, add_new_record, is_number, update_mark, student_statistics
+from utils import read_files, add_semester, add_new_record, is_number, update_mark, student_statistics, global_statistics
 
 ##########################################
 
@@ -43,7 +43,7 @@ Enter Command Number:
             except KeyError:
                 print("\nID not found")
         elif cmd == 5:
-            pass
+            global_statistics()
         elif cmd == 6:
             pass
         else:
@@ -70,10 +70,8 @@ Enter Command Number:
                 student_statistics()
             except KeyError:
                 print("\nID not found")
-        elif cmd == 5:
-            pass
-        elif cmd == 6:
-            pass
+        elif cmd == 2:
+            global_statistics()
         else:
             break
 

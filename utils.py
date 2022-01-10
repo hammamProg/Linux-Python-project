@@ -198,3 +198,19 @@ def student_statistics():
         raise KeyError("Student with this ID was not found")
     
     students[id].print_statistics()
+    
+# 5
+def global_statistics():
+    
+    sum = 0
+    hours_sum = 0
+    sems_count = 0
+    
+    for st in students.values():
+        sum += st.get_gpa()
+        for sem in st.semesters.values():
+            hours_sum += sem.get_hours()
+            sems_count += 1
+            
+    print("Avg > " + str( sum/len(students)))
+    print("Hours Per Sem Avg > " + str( hours_sum/sems_count))
