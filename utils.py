@@ -206,11 +206,28 @@ def global_statistics():
     hours_sum = 0
     sems_count = 0
     
+    marks = []
+    
     for st in students.values():
+        
+        marks.extend(st.get_marks_list())
+        
         sum += st.get_gpa()
+        
         for sem in st.semesters.values():
             hours_sum += sem.get_hours()
             sems_count += 1
             
     print("Avg > " + str( sum/len(students)))
-    print("Hours Per Sem Avg > " + str( hours_sum/sems_count))
+    print("Hours Per Sem Avg >> " + str( hours_sum/sems_count))
+    
+    import matplotlib.pyplot as plt
+    
+    plt.hist(marks)
+    plt.show()
+    
+# # 6
+# def search():
+    
+    
+    

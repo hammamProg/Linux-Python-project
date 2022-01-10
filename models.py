@@ -1,6 +1,6 @@
 ''' Python Classes '''
 
-from typing import Tuple
+from typing import List, Tuple
 
 
 class SemesterRecord():
@@ -30,6 +30,15 @@ class SemesterRecord():
             
         return hours
     
+    def get_marks(self) -> List[float]:
+        
+        marks = []
+        
+        for course_id in self.marks.keys():
+            marks.append(self.marks[course_id][1])
+            
+        return marks
+    
     def __init__(self, year_sem: str, courses_dict: dict[str, Tuple[int, float]]) -> None:
         
         self.year_sem = year_sem
@@ -52,6 +61,16 @@ class Student():
         
             
         return sem_points / hours
+    
+    def get_marks_list(self) -> List[float]:
+        
+        marks = []
+        
+        for sem in self.semesters.values():
+            marks.extend(sem.get_marks())
+            
+        return marks
+        
     
     def get_hours(self) -> int:
         ''' sum of hours '''
