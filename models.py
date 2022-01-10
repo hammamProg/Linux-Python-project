@@ -48,8 +48,8 @@ class Student():
         
         self.id = id
         self.semesters = semesters
-        self.gpa , self.hours = self.calc()
-        self.avg_hours_per_sem = self.hours / len(semesters.keys())
+        # self.gpa , self.hours = self.calc()
+        # self.avg_hours_per_sem = self.hours / len(semesters.keys())
         
     def __str__(self) -> str:
         return "[ID:" + str(self.id) + ", gpa:" + str(self.gpa) + ", hours:" + str(self.hours) + ", semesters: " + str(self.semesters) + " ]"
